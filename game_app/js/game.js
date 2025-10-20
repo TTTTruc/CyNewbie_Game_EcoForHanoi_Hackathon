@@ -268,10 +268,9 @@ function rideTo(mode, destKey){
   if(!def||!dest) return;
   // parked constraint for bike/moto: must be at same tile as parked location to ride
   if(mode==='bike' || mode==='moto'){
-    const parkedAt = state.vehicles.parked[mode]; const parkedPos = getPoiPos(parkedAt);
-    if(!parkedPos || !(state.pos.x===parkedPos.x && state.pos.y===parkedPos.y)){
-      showToast(`${def.label} is parked at ${parkedAt}.`); return;
-    }
+    const parkedAt = state.vehicles.parked[mode];
+    const curPoi = getTile(state.pos.x, state.pos.y)?.getAttribute('data-poi');
+    if(curPoi !== parkedAt){ showToast(`${def.label} is parked at ${parkedAt}.`); return; }
   }
   // apply weather modifiers to transport
   let co2 = def.co2 || 0; let coins = def.coins || 0;
