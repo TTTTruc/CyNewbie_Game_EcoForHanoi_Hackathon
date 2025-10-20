@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carbon Quest — Game</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/game.css" />
+</head>
+<body class="game-page">
+  <header id="hud" class="hud" aria-live="polite">
+    <div class="hud-left">
+      <span id="dayTag" class="pill day">Day 1 / 5</span>
+      <span id="co2Tag" class="pill co2">CO₂ Today: 0.00 kg</span>
+    </div>
+    <div class="hud-mid">
+      <span id="coinsTag" class="pill coins">Coins: 0</span>
+      <span id="treesTag" class="pill trees">Trees: 0</span>
+    </div>
+    <div class="hud-right">
+      <button id="endDayBtn" class="btn small" disabled>End Day</button>
+      <button id="muteToggleHud" class="btn small" aria-pressed="false">🔊</button>
+      <button id="editProfileBtn" class="btn small">Edit</button>
+      <span id="profileTag" class="profile" role="img" aria-label="Player profile">🎒 Linh</span>
+    </div>
+  </header>
+
+  <section id="statusBanner" class="banner" role="status" aria-live="polite"></section>
+
+  <main class="game-wrap">
+    <div id="map" class="map" role="grid" aria-label="City map grid"></div>
+    <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="dpad" id="dpad">
+      <button class="dir up" aria-label="Move up">▲</button>
+      <div class="mid">
+        <button class="dir left" aria-label="Move left">◀</button>
+        <button class="dir right" aria-label="Move right">▶</button>
+      </div>
+      <button class="dir down" aria-label="Move down">▼</button>
+    </div>
+  </main>
+
+  <!-- Modals -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content" role="document">
+      <div class="modal-header">
+        <h2 id="modalTitle">Choice</h2>
+        <button id="modalClose" class="btn small" aria-label="Close">✕</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+    </div>
+  </div>
+
+  <audio id="ambientAudio" src="assets/audio/ambient.mp3" loop preload="none"></audio>
+  <audio id="clickSfx" src="assets/audio/click.wav" preload="none"></audio>
+  <audio id="successSfx" src="assets/audio/success.wav" preload="none"></audio>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
+

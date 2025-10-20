@@ -1,0 +1,35 @@
+:root {
+  /* Global Visual System */
+  --ink:#1f2937; --muted:#64748b; --card:#ffffff; --shadow:rgba(0,0,0,.12);
+  --road:#E7D1A7; --water:#9EC7FF; --grass:#E9F7E6;
+  --home:#A8C686; --transport:#B0B0B0; --school:#8ED1A0; --company:#7C7C7C; --food:#D7A86E; --coffee:#F6D6AD; --fine:#4C6054;
+  --brand:#16a34a; --brand-2:#0284c7; --danger:#dc2626; --ring:rgba(2,132,199,.35);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--ink); background: #f7fafc;
+}
+
+h1, h2, h3 { margin: 0 0 .5rem; }
+p { margin: 0 0 1rem; }
+
+.btn { display:inline-flex; align-items:center; justify-content:center; padding:.65rem 1rem; border:1px solid #cbd5e1; background:#fff; color:var(--ink); border-radius:.6rem; cursor:pointer; transition: transform .02s ease, box-shadow .1s ease, background .2s ease; }
+.btn.primary { background: var(--brand); color:#fff; border-color: var(--brand); }
+.btn.small { padding:.4rem .6rem; font-size:.9rem; }
+.btn:focus { outline:none; box-shadow:0 0 0 .2rem var(--ring); }
+.btn:active { transform: translateY(1px); }
+.btn[disabled] { opacity:.6; cursor:not-allowed; }
+
+.menu-page .menu { max-width:760px; margin:12vh auto; padding:2rem; background:var(--card); border:1px solid #e2e8f0; border-radius:1rem; box-shadow: 0 8px 30px var(--shadow); text-align:center; }
+.menu .tagline { color: var(--muted); margin-bottom: 1.5rem; }
+.menu .menu-actions { display:flex; gap:1rem; justify-content:center; margin-bottom:1rem; flex-wrap:wrap; }
+.menu .audio-toggle { margin-top:.5rem; }
+.menu .credits { margin-top:1rem; color: var(--muted); }
+
+.about-page .about { max-width:880px; margin:6vh auto; padding:2rem; background:var(--card); border:1px solid #e2e8f0; border-radius:1rem; }
+
+.sr-only { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
