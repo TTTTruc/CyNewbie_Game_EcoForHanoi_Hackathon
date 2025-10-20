@@ -67,17 +67,20 @@ const poiMap = [
 
 // POIs and bus stops with kinds and labels
 const poiList = [
-  { x:2, y:8, kind:'home', icon:'🏠', label:'Home', tint:'poi-home' },
-  { x:8, y:8, kind:'bus1', icon:'🚏', label:'Bus Stop #1', tint:'poi-bus' },
-  { x:12, y:2, kind:'school', icon:'🏫', label:'School', tint:'poi-school' },
-  { x:16, y:2, kind:'bus2', icon:'🚏', label:'Bus Stop #2', tint:'poi-bus' },
-  { x:12, y:7, kind:'company', icon:'🏭', label:'Company', tint:'poi-company' },
-  { x:16, y:7, kind:'bus3', icon:'🚏', label:'Bus Stop #3', tint:'poi-bus' },
-  { x:7, y:5, kind:'stallA', icon:'🍜', label:'Food A', tint:'poi-food' },
-  { x:9, y:5, kind:'stallB', icon:'🍱', label:'Food B', tint:'poi-food' },
-  { x:11, y:5, kind:'stallC', icon:'🍮', label:'Dessert', tint:'poi-food' },
-  { x:6, y:2, kind:'cafe', icon:'☕', label:'Cafe', tint:'poi-coffee' },
-  { x:4, y:6, kind:'fine', icon:'🍽️', label:'Fine Dining', tint:'poi-fine' },
+  // Bottom band (y=8..9)
+  { x:2,  y:8,  kind:'home',    icon:'🏠', label:'Home',        tint:'poi-home' },
+  { x:6,  y:8,  kind:'bus1',    icon:'🚏', label:'Bus Stop #1', tint:'poi-bus' },
+  { x:10, y:8,  kind:'company', icon:'🏭', label:'Company',     tint:'poi-company' },
+  { x:14, y:8,  kind:'bus3',    icon:'🚏', label:'Bus Stop #3', tint:'poi-bus' },
+  { x:18, y:8,  kind:'fine',    icon:'🍽️', label:'Fine Dining', tint:'poi-fine' },
+  // Top band (y=1..2)
+  { x:2,  y:1,  kind:'stallA',  icon:'🍜', label:'Food A',      tint:'poi-food' },
+  { x:6,  y:1,  kind:'cafe',    icon:'☕', label:'Cafe',        tint:'poi-coffee' },
+  { x:10, y:1,  kind:'school',  icon:'🏫', label:'School',      tint:'poi-school' },
+  { x:14, y:1,  kind:'bus2',    icon:'🚏', label:'Bus Stop #2', tint:'poi-bus' },
+  { x:17, y:1,  kind:'stallB',  icon:'🍱', label:'Food B',      tint:'poi-food' },
+  // Lower edge (y=10..11)
+  { x:2,  y:10, kind:'stallC',  icon:'🍮', label:'Dessert',     tint:'poi-food' },
 ];
 
 const artClassByKind = {
