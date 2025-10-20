@@ -25,7 +25,7 @@ const els = {
   success: document.getElementById('successSfx'),
 };
 
-const GRID_W = 15, GRID_H = 10;
+const GRID_W = 20, GRID_H = 12;
 
 const initialState = () => ({
   day: 1, daysTotal: 5,
@@ -51,31 +51,33 @@ const tileTypes = { R:'t-road', P:'t-park', W:'t-water', B:'t-block', O:'t-poi' 
 
 // Map layout (15x10). Ensure roads connect POIs.
 const poiMap = [
-  'BBBBBBBBBBBBBBB',
-  'BRRRRPRRRRPRRB',
-  'BRPPRPRRRRPRRB',
-  'BRPWRPRRRRPRRB',
-  'BRPRRPRPPPPPRB',
-  'BRPRRPRRWRPRRB',
-  'BRPRRPRRRPRPRB',
-  'BRPRRRRRRRPRRB',
-  'BRPRRRRRRRRPRB',
-  'BBBBBBBBBBBBBBB',
+  'BBBBBBBBBBBBBBBBBBBB',
+  'BPPPRPPPRPPPRPPPRPPB',
+  'BPPPRPPPRPPPRPPPRPPB',
+  'BRRRRRRRRRRRRRRRRRRB',
+  'BPPPRPPPRPPPRPPPRPPB',
+  'BPPPRPRRRRRRRRPPRPPB',
+  'BPPPRPPPRPPPRPPPRPPB',
+  'BRRRRRRRRRRRRRRRRRRB',
+  'BPPPRPPPRPPPRPPPRPPB',
+  'BPPPRPPPRPPPRPPPRPPB',
+  'BPPPRPPPRPPPRPPPRPPB',
+  'BBBBBBBBBBBBBBBBBBBB',
 ];
 
 // POIs and bus stops with kinds and labels
 const poiList = [
-  { x:1, y:7, kind:'home', icon:'🏠', label:'Home', tint:'poi-home' },
-  { x:3, y:7, kind:'bus1', icon:'🚏', label:'Bus Stop #1', tint:'poi-bus' },
-  { x:10, y:3, kind:'school', icon:'🏫', label:'School', tint:'poi-school' },
-  { x:11, y:3, kind:'bus2', icon:'🚏', label:'Bus Stop #2', tint:'poi-bus' },
-  { x:12, y:6, kind:'company', icon:'🏭', label:'Company', tint:'poi-company' },
-  { x:13, y:6, kind:'bus3', icon:'🚏', label:'Bus Stop #3', tint:'poi-bus' },
-  { x:8, y:5, kind:'stallA', icon:'🍜', label:'Food A', tint:'poi-food' },
-  { x:9, y:6, kind:'stallB', icon:'🍱', label:'Food B', tint:'poi-food' },
-  { x:7, y:6, kind:'stallC', icon:'🍮', label:'Dessert', tint:'poi-food' },
-  { x:7, y:3, kind:'cafe', icon:'☕', label:'Cafe', tint:'poi-coffee' },
-  { x:6, y:8, kind:'fine', icon:'🍽️', label:'Fine Dining', tint:'poi-fine' },
+  { x:2, y:8, kind:'home', icon:'🏠', label:'Home', tint:'poi-home' },
+  { x:8, y:8, kind:'bus1', icon:'🚏', label:'Bus Stop #1', tint:'poi-bus' },
+  { x:12, y:2, kind:'school', icon:'🏫', label:'School', tint:'poi-school' },
+  { x:16, y:2, kind:'bus2', icon:'🚏', label:'Bus Stop #2', tint:'poi-bus' },
+  { x:12, y:7, kind:'company', icon:'🏭', label:'Company', tint:'poi-company' },
+  { x:16, y:7, kind:'bus3', icon:'🚏', label:'Bus Stop #3', tint:'poi-bus' },
+  { x:7, y:5, kind:'stallA', icon:'🍜', label:'Food A', tint:'poi-food' },
+  { x:9, y:5, kind:'stallB', icon:'🍱', label:'Food B', tint:'poi-food' },
+  { x:11, y:5, kind:'stallC', icon:'🍮', label:'Dessert', tint:'poi-food' },
+  { x:6, y:2, kind:'cafe', icon:'☕', label:'Cafe', tint:'poi-coffee' },
+  { x:4, y:6, kind:'fine', icon:'🍽️', label:'Fine Dining', tint:'poi-fine' },
 ];
 
 const artClassByKind = {
@@ -348,9 +350,10 @@ function renderMap(){
       const poi=poiList.find(p=>p.x===x && p.y===y);
       if(poi){
         d.classList.add('t-poi'); if(poi.tint) d.classList.add(poi.tint);
+        d.setAttribute('data-tt','t-poi');
+        d.setAttribute('data-poi', poi.kind);
         const artCls = artClassByKind[poi.kind];
         if(artCls){ const art=document.createElement('div'); art.className=`poi-art ${artCls}`; d.appendChild(art); const label=document.createElement('div'); label.className='poi-label'; label.textContent=`${poi.icon} ${poi.label}`; art.appendChild(label); }
-        d.setAttribute('data-poi', poi.kind);
       }
       else if(tt==='t-park' && obstaclesPositions.has(`${x},${y}`)){
         d.classList.add('decor-obstacles');
@@ -358,6 +361,8 @@ function renderMap(){
       els.map.appendChild(d);
     }
   }
+  // Expand each POI footprint to 2x2 tiles (accessible and white background)
+  expandPoiFootprints();
   // After tiles drawn, (path lines disabled; using orange tile backgrounds instead)
   const av=document.createElement('div'); av.className='avatar'; av.textContent='🧑‍🎓'; av.id='avatar'; els.map.appendChild(av); positionAvatar();
   // Update parked vehicle markers after map render
@@ -389,6 +394,18 @@ function renderPathOverlay(){
 }
 
 function isPathTile(x,y){ const t=getTile(x,y); if(!t) return false; const tt=t.getAttribute('data-tt'); return (tt==='t-road'||tt==='t-poi'); }
+
+function expandPoiFootprints(){
+  poiList.forEach(p=>{
+    for(let dy=0; dy<2; dy++){
+      for(let dx=0; dx<2; dx++){
+        const tx=p.x+dx, ty=p.y+dy; if(tx>=GRID_W||ty>=GRID_H) continue;
+        const tile=getTile(tx,ty); if(!tile) continue;
+        tile.classList.add('t-poi'); tile.setAttribute('data-tt','t-poi'); tile.setAttribute('data-poi', p.kind);
+      }
+    }
+  });
+}
 
 let lastPoi=null;
 function attemptMove(dx,dy){ const nx=state.pos.x+dx, ny=state.pos.y+dy; if(nx<0||ny<0||nx>=GRID_W||ny>=GRID_H) return; if(!isWalkable(nx,ny)) return; const curTile=getTile(state.pos.x,state.pos.y); const curKind=curTile?.getAttribute('data-poi'); // leaving current POI resets visited flag
