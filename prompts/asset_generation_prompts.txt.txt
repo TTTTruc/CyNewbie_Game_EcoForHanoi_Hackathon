@@ -1,0 +1,2 @@
+1.
+ART PRODUCTION (actionable prompts)  Deliver one SVG per POI with these filenames:  home_floorplan.svg, entrance_bus.svg, school_campus.svg, company_block.svg, stall_pho.svg, stall_lunch.svg, stall_dessert.svg, cafe.svg, fine_dining.svg, bus_stop.svg, obstacles_pack.svg Style notes: soft outlines, flat shading, subtle texture grain, 3/4 overhead, saturated mid-tones, warm ambient shadows.  create prompts for each of the svg so i can input to sora

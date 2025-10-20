@@ -1,0 +1,29 @@
+1.
+you are the best game developer.
+there are a few bugs. modify the code to fix it.
+- when character at any bus station and choose the destination is another bus station, there is a moving motion like when character use a bike or motorbike to the destination
+- when user take any kind of transportation, the moving motion will be the image of that transportation. when arrive at the destinatition, the transportation disappear, the character reappear
+- when character take a bike or a motorbike to another desitination, the vehicle remain at that transportation. when click on that location or character re-enter that location, there is a modal pop up showing there is a vehicle and allow user to use that vehicle to navigate
+- clear the vehicle existance from a location if that vehicle is not in that location anymore
+
+2.
+make some UI adjustment:
+- each grid square size 48px x 48px
+- each location image should be 240px x 240px
+- each transportation image is 48px x 48px
+- visualize the path that character can step on in the color of orange (make it 1 line, the road can split and have intersection)
+- the remain area is blocked (which user can not step onto), make it green
+- the label of each location locate at the bottom of the location
+
+3.
+expand the area game-wrap so that all the images fit into the section instead of overlay, i want the each location to take up 4 grid square
+
+4.
+now overall UI adjustment and enhancement:
+- the layer structure of game: the grid background, the images, the label, the transportation, the character, the pop up modal, the HUD
+- Each location takes up 4 spaces, those 4 spaces' background color is white, and is accessible
+- add more columns and rows to the game-wrap and separate each location by more than 1 row or column.
+- debug the road path as when user try to navigate to other destination, using vehicle, it show no road path
+
+5.
+If the bike or motorbike pixel framework is entirely inside the pixel framework of the location, then after player make a decision to use the bike or motorbike to go to a destination, both player and bike or motorbike will go to the destination as well

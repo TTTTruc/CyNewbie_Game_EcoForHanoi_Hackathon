@@ -1,0 +1,8 @@
+1.
+I am planning to make a vibing code about real situation of air pollution in Ha Noi. I want to focus on daily routine of Hanoi university students and how their routines affect CO2 production (For example: riding a motorbike instead of taking a bus will produce ... CO2) And at the end of the day, we will calculate and finalize how much CO2 is produced. I want a story board about real life of Hanoi university student first. Can you help me with the game story board (detailed options)
+
+There will be random questions to gain coins, and after 5 days of playing, if we want to improve the CO2 pollution, we can pay coins to plant trees or anything like that
+
+
+2. 
+Awesome, for optional gameplay features, I would like the weather randomizer and events. I would love to generate vibing code for this game

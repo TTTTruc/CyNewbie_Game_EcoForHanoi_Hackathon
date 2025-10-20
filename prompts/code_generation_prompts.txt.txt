@@ -1,0 +1,946 @@
+1.
+Game duration: 5 days first. Weather system: include all your recommendation. Quiz events: include all your recommendation. Visual style: cartoon/illustrated vibe. Music / Sound Effects: add placeholder audio. 
+
+2.
+here are the features i wanted to add and modify: 
+- take pokemon game as a design reference but not in pixel styles (as i want it to be visualize as a map)
+- add a static bar on the top, showing the the total CO2 spent in that day, total coins, total of trees user have planted, and a user profile
+
+3. 
+based on the information above, create a user stories that cover the flow of the web
+
+4.
+UI ENHANCEMENT:
+- improve the map so that it look like the reference image style (use visual to demontrate each location, obstacles)
+- the map includes these 7 locations: 
+1/Home (placed on the left, displaying the inside layout of home (in a floor plan layout), including bedroom, kitchen, living room and a yard. Each area should be visualize with 1-2 simple interiors. the yard will include a bike and a motorbike) 
+2/Entrance between Home and Outside (there is a road connect home's yard to the outside streets and location. there is a bus station locate in this area) 
+3/School (display the school campus including 3 buildings: the main school building, library, canteen) 
+4/Company (display the company building) 
+5/Food stall (there are 3 food stalls lying separately on the map, 1 sell phở and hủ tiếu, 1 sell office lunch, 1 sell dessert like cottan candy, flans...) 
+6/Coffee shop
+7/Fine dining restaurant
+
+- Includes 2-3 more bus station across the map (1 near the school, 1 near the company)
+- COLOR PALETTE for each location (use that as the main color palette for the whole website too): 
+Home: #A8C686
+Transportation: #B0B0B0
+School: #8ED1A0
+Company/Factory Zone: #7C7C7C
+Food Stalls: #D7A86E
+Coffee shop #F6D6AD 
+Fine Dining: #4C6054
+
+- Generate art for each location based on the style of the reference image
+
+GAME FLOW ENHANCEMENT:
+- when the character enter each location, it will pop up a modal with list of actions
+ +Bedroom in home: take a nap; go to sleep (this will activate the end day button instead of at least 3 phases are completed)
+ + Kitchen in home: cook breakfast; cook afternoon meal; cook dinner
+ + Living room in home: watch TV
+ + Home will have an option to choose use a fan or an AC (each emit different CO2)
+ + Transportation: walk (when character navigate manually); bike (when click on the bike in the yard); motorbike (when click on the motorbike in the yard); bus (when click on each bus station). when navigate using transportation other than walking, it will pop up a modal showing other locations options. user will see the moving motion of that certain transportation move to the destination point. when arrive, the transporation will locate at that location and the character appear again.
+ + if character at school or company, it will automatically emit a certain level of CO2 due to the use of AC
+ + Each food stalls, coffee shop and restaurant will pop up a modal list some items menu (3-4 items) when character arrive those ddestinations.
+
+CALCULATE the coins and CO2 cost for the new options based on the old metrics.
+
+UPDATE the user stories and specific document based on the enhancement
+
+5.
+you are the best game developer. create the game following these documents: 
+
+This is the user story: "Epics & User Stories
+EPIC A — Entry & Navigation
+
+A1. Main menu
+
+As a player, I want to start a new game or read about the concept, so that I know what I’m playing.
+
+Acceptance criteria
+
+Given I’m on index.html, when I click Play, then I’m routed to game.html Day 1.
+
+Given I’m on index.html, when I click About, then I’m routed to about.html.
+
+A2. Resume (optional later)
+
+As a returning player, I want to resume my last run, so that I can continue my progress.
+
+Acceptance criteria
+
+If a saved run exists in localStorage, a Continue button appears and loads saved state.
+
+EPIC B — Overworld & Interaction (Pokémon-style map, non-pixel)
+
+B1. Move around the city map
+
+As a player, I want to move my avatar on an overworld map using keyboard/touch, so that I can reach points of interest (POIs).
+
+Acceptance criteria
+
+Arrow keys/WASD move the avatar one tile if the tile is walkable (road/park/POI).
+
+Water/blocks are not walkable.
+
+On mobile, tapping adjacent tiles or on-screen arrows moves the avatar.
+
+B2. Enter POIs
+
+As a player, I want a choice modal to open when I step on a POI, so that I can take context actions (morning, transport, lunch, study, evening).
+
+Acceptance criteria
+
+When the avatar lands on a POI, a modal appears with 3–4 choices.
+
+Choosing an action immediately applies CO₂/coin changes and closes the modal.
+
+EPIC C — Fixed Top HUD
+
+C1. Daily CO₂ meter
+
+As a player, I want a static bar at the top to show CO₂ Today, so that I see the impact of my choices.
+
+Acceptance criteria
+
+The HUD displays “CO₂ Today: X.XX kg” and updates after every action.
+
+On smoggy days (baseline), the initial value includes the baseline.
+
+C2. Coins & trees
+
+As a player, I want to see my Coins and Trees planted, so that I can plan end-of-week investments.
+
+Acceptance criteria
+
+Coins increment after eco actions/quizzes; trees increment after invest stage.
+
+Values persist throughout the 5-day run.
+
+C3. User profile
+
+As a player, I want to see and edit my name and avatar emoji, so that the game feels personal.
+
+Acceptance criteria
+
+HUD shows avatar + name.
+
+Clicking Edit opens a simple edit prompt; saving updates HUD immediately.
+
+C4. Day indicator
+
+As a player, I want to see Day N / 5, so that I know my progress.
+
+Acceptance criteria
+
+HUD shows current day and updates at day rollover.
+
+EPIC D — Daily Loop & Weather
+
+D1. Start of day & weather
+
+As a player, I want a daily banner that shows weather (Sunny/Rainy/Cloudy/Smoggy) and its modifiers, so that I can plan choices.
+
+Acceptance criteria
+
+At the start of each day, the status bar displays weather text and color.
+
+Weather applies its modifiers (e.g., Rainy: +0.5 kg for motorbike; Sunny: +1 coin bonus for walking/biking; Smoggy: +0.5 kg baseline).
+
+D2. Daily phases via POIs
+
+As a player, I want to complete the day by visiting relevant POIs (morning → transport → lunch → study → evening), so that the day feels like a routine.
+
+Acceptance criteria
+
+Each phase can be triggered by its POI; choices apply CO₂/coin effects and may include weather adjustments.
+
+The game prevents ending the day until at least 3 phases are completed (configurable).
+
+D3. End of day summary
+
+As a player, I want a summary modal at day end, so that I can see totals and tips.
+
+Acceptance criteria
+
+Summary shows CO₂ Today, Coins Gained, a top emitter category (e.g., transport), and a tip.
+
+Clicking Next Day rolls to Day N+1, resets CO₂ Today to 0, re-randomizes weather.
+
+EPIC E — Random Events & Quizzes
+
+E1. Random events
+
+As a player, I want occasional events (traffic jam, power cut, discount day, campaign, sick day), so that days feel alive and variable.
+
+Acceptance criteria
+
+After an action, there’s ~25% chance to trigger a random event.
+
+Event applies immediate CO₂/coin delta and shows a toast.
+
+E2. Daily quiz
+
+As a player, I want one climate quiz per day, so that I can learn and earn bonus coins.
+
+Acceptance criteria
+
+A random quiz appears once per day after any phase completion.
+
+Correct answer grants coins (e.g., +3); wrong grants 0; show short fact.
+
+Quiz cannot reappear once answered for that day.
+
+EPIC F — Investments (after Day 5)
+
+F1. Spend coins to reduce CO₂
+
+As a player, I want an Invest screen at the end of Day 5 to spend coins on actions (Plant Tree, Solar Panel, Bike-sharing, Reusable Bottle), so that I can reduce my net CO₂.
+
+Acceptance criteria
+
+Each investment shows cost and reduction effect (e.g., Tree: 10 coins → −2 kg).
+
+On purchase, coins are deducted; trees planted count increases (for trees).
+
+A visual “city gets cleaner” state is shown (e.g., less smog overlay).
+
+F2. Final report & rank
+
+As a player, I want a final scoreboard, so that I can see my Eco Rank and replay.
+
+Acceptance criteria
+
+Final screen shows: Total CO₂ (5 days), Coins spent, Net CO₂ after reductions, Eco Index, Rank (Eco Hero / Conscious Citizen / Urban Polluter).
+
+Buttons: Replay (new run) and Back to Menu.
+
+EPIC G — Audio/Visual & Accessibility
+
+G1. Placeholder audio
+
+As a player, I want subtle ambient music and click sounds, so that interactions feel lively.
+
+Acceptance criteria
+
+Ambient audio can be muted/unmuted from HUD or menu.
+
+Button clicks/choice confirms play SFX.
+
+G2. Cartoon/illustrated style
+
+As a player, I want a clean, illustrated look (roads/parks/water), so that the city reads like a map.
+
+Acceptance criteria
+
+Tiles and POIs use simple illustrated styling (no pixel art).
+
+Weather changes subtly adjust background tones.
+
+G3. Accessibility & input
+
+As a player, I want keyboard and mobile support + readable UI, so that it’s easy to play.
+
+Acceptance criteria
+
+Keyboard: Arrow/WASD; Mobile: on-screen controls/tap to move.
+
+All text meets contrast guidelines; modals are keyboard-focusable; Escape closes modal.
+
+EPIC H — Persistence & Tech (optional/next)
+
+H1. Local save
+
+As a player, I want my best Eco Index saved locally, so that I can chase high scores.
+
+Acceptance criteria
+
+After final report, score saved to localStorage leaderboard (top 5).
+
+Continue on menu resumes if a run is mid-progress.
+
+Non-functional Stories (brief)
+
+As a user, I want the game to load fast, so that I can play instantly.
+Acceptance: First contentful paint < 2s on mid-range mobile; single HTTP file bundle optional.
+
+As a user, I want responsive layout, so that I can play on phone/tablet/desktop.
+Acceptance: HUD, modals, map scale sensibly at 360–1440px widths.
+
+Definition of Done (per story)
+
+UI implemented per acceptance criteria.
+
+State updates CO₂/coins/trees correctly and consistently with weather/event modifiers.
+
+Keyboard + touch tested.
+
+No console errors; basic Lighthouse checks pass for performance/accessibility"
+
+specific document: "# Week in Hanoi: Carbon Quest — Developer Specification
+
+**Owner:** al
+**Game Type:** 2D choice-based map adventure (Pokémon-like overworld, non‑pixel)
+**Stack:** HTML, CSS, JavaScript (no backend). Optional libraries allowed only if they run fully client-side.
+**Target:** Desktop + mobile web
+
+---
+
+## 1) Project Goals
+
+* Teach players how daily choices of Hanoi university students affect CO₂ emissions.
+* Simulate **5 in‑game days**, then let players **invest coins** to reduce net CO₂ (trees, solar, bike-sharing, reusable bottle).
+* Add **weather randomizer** and **random events** that modify outcomes.
+* Visualize movement on a **city map** with POIs (morning, transport, lunch, study, evening).
+* Show a fixed **top HUD** with **CO₂ Today**, **Coins**, **Trees planted**, and **Profile**.
+* Include ambient music + click SFX (toggleable).
+
+---
+
+## 2) Player Flow (High-level)
+
+1. **Index (Menu):** Play / Learn / About.
+2. **Game Day Start:** Randomize weather; show banner with modifiers.
+3. **Overworld Map:** Player moves to POIs → opens a modal with choices.
+4. **Choices Apply:** CO₂ & coins adjusted; random event ~25% chance.
+5. **Daily Quiz:** Once per day, award coins on correct answer.
+6. **End of Day Summary:** Show totals + tip → advance to next day.
+7. **After Day 5:** Investments screen → reduce CO₂ using coins, show visual improvement.
+8. **Final Report:** Totals, rank, replay.
+
+---
+
+## 3) Core Mechanics
+
+* **CO₂ accounting:** Each choice adds/subtracts CO₂; weather & events can modify.
+* **Coins:** Awarded for eco choices and quiz correctness; spent on investments.
+* **Trees:** Count shown in HUD; some investments directly increase it.
+* **Weather:** Sunny / Rainy / Cloudy / Smoggy → modifiers.
+* **Random Events:** Traffic jam, power cut, discount day, environmental campaign, sick day.
+
+---
+
+## 4) HUD (Fixed Top Bar)
+
+Elements (left → right):
+
+* **Day tag**: `Day N / 5`.
+* **CO₂ Today**: e.g., `1.75 kg` (resets each day; includes smog baseline).
+* **Coins**: integer.
+* **Trees**: integer (lifetime in run).
+* **Profile**: avatar emoji + name (editable via prompt modal), optional mute/unmute toggle.
+
+**Acceptance:** HUD persists on scroll, updates live after every choice/event.
+
+---
+
+## 5) Weather System
+
+| Key      | Label                                  | UI color   | Modifiers (applied for the day)      |
+| -------- | -------------------------------------- | ---------- | ------------------------------------ |
+| `sunny`  | ☀️ Sunny day • Walking/Biking +1 coin  | light‑cyan | `walkBikeCoinBonus=+1`               |
+| `rainy`  | 🌧️ Rainy day • Motorbike +0.5 kg CO₂  | light‑blue | `motorbikeCo2Penalty=+0.5`           |
+| `cloudy` | ☁️ Cloudy • Neutral                    | gray       | none                                 |
+| `smoggy` | 🌫️ Pollution alert • +0.5 kg baseline | warm‑amber | `baselineCo2=+0.5` once at day start |
+
+**Implementation:** At `startDay()`, pick weather, set `todaysMods`, update status banner, apply `baselineCo2` if any.
+
+---
+
+## 6) Random Events (≈25% after an action)
+
+* **Traffic jam**: `+0.5 kg` CO₂ if transport chosen earlier (apply regardless for simplicity)
+* **Power cut**: `-0.2 kg` CO₂ (less electricity)
+* **Discount day**: `+1 coin`
+* **Environmental campaign**: `+2 coins`
+* **Sick day**: `-0.3 kg` CO₂ (skip going out)
+
+**UI:** toast at bottom; also log in session history (optional).
+
+---
+
+## 7) Quizzes (Once per day)
+
+* Trigger: After completing 1–2 POI choices/day.
+* Structure: 1 question, 4 options, 1 correct.
+* Reward: Correct → `+3 coins`, Wrong → `0`.
+* Show a short fact on completion.
+
+**Acceptance:** A quiz can appear **only once per day**; lockout thereafter.
+
+---
+
+## 8) Investments (After Day 5)
+
+| Action             | Cost |          Effect | Notes                                          |
+| ------------------ | ---: | --------------: | ---------------------------------------------- |
+| 🌳 Plant Tree      |   10 | `-2.0 kg` total | `trees += 1` per purchase                      |
+| ☀️ Solar Panel     |   20 | `-4.0 kg` total | one‑off per session or stackable (config flag) |
+| 🚲 Bike-sharing    |   15 | `-3.0 kg` total | unlock optional future perk (next run)         |
+| 💧 Reusable Bottle |    5 | `-1.0 kg` total | small change                                   |
+
+**Visual:** Fade smog overlay; add trees to skyline illustration.
+
+---
+
+## 9) Data & Balancing (initial values)
+
+**Choices by POI:**
+
+* **Morning**: Long hot shower `+0.8 kg`; Cold shower `+0.2 kg/+1 coin`; Coffee to‑go `+0.5 kg`; Cook noodles `+0.3 kg/+1 coin`.
+* **Transport**: Motorbike `+2.5 kg` (**+0.5** on rainy); Bus `+0.9 kg/+1 coin`; Bicycle `0 kg/+2 coins` (**+1 coin** on sunny); Walk `0 kg/+2 coins` (**+1 coin** on sunny).
+* **Lunch**: Canteen `+0.7 kg/+1`; Street food `+1.5 kg`; Vegetarian `+0.3 kg/+2`; Delivery `+2.0 kg`.
+* **Study/Afternoon**: Library AC `+0.4 kg/+1`; Cafe `+1.2 kg/+1`; Sports `+0.1 kg/+2`; Dorm fan `+0.2 kg/+2`.
+* **Evening**: Go out motorbike `+2.5 kg` (**+0.5** on rainy); Stay dorm `+0.3 kg/+2`; Cook dinner `+0.8 kg/+2`; Order delivery `+2.0 kg`.
+
+**Daily completion rule:** Require at least **3 POI actions** to unlock End‑of‑Day.
+
+---
+
+## 10) Architecture & Folders
+
+```
+game_app/
+├── index.html           # menu
+├── game.html            # overworld + gameplay
+├── about.html           # credits & how CO₂ is calculated
+│
+├── css/
+│   ├── style.css        # global styles (menus, typography, buttons)
+│   └── game.css         # map, HUD, modals, banners
+│
+├── js/
+│   ├── config.js        # constants (choices, weather, events, quizzes)
+│   ├── utils.js         # rng, formatting, storage helpers
+│   ├── menu.js          # index.html interactions
+│   ├── game.js          # state machine, day loop, movement, POIs
+│   └── main.js          # bootstrap entry for game.html
+│
+└── assets/
+    ├── images/          # backgrounds, HUD icons, skyline
+    ├── sprites/         # avatar, POI markers (SVG preferred)
+    └── audio/           # ambient.mp3, click.wav, success.wav
+```
+
+---
+
+## 11) State Model (game.js)
+
+```js
+const state = {
+  day: 1,
+  daysTotal: 5,
+  co2Today: 0,
+  co2Total: 0,
+  coins: 0,
+  trees: 0,
+  weather: null,            // 'sunny' | 'rainy' | 'cloudy' | 'smoggy'
+  todaysMods: {},           // derived from weather
+  quizDoneToday: false,
+  actionsDoneToday: 0,
+  pos: { x: 2, y: 6 },
+  gridW: 15, gridH: 10,
+  profile: { name: 'Linh', avatar: '🎒', title: 'Student • Hanoi' },
+};
+```
+
+**Transitions:**
+
+* `startDay()` → pick weather → set `todaysMods` → apply baseline.
+* `onPOIAction(choice)` → apply CO₂ & coin modifiers → maybeRandomEvent() → maybeShowQuizOnce().
+* `endOfDay()` → `co2Total += co2Today`; reset `co2Today`, flags; `day++` or go `investments()`.
+* `investments()` → spend coins → set reductions → `finalReport()`.
+
+---
+
+## 12) Config Contracts (config.js)
+
+```js
+export const WEATHER = [
+  { key:'sunny',  label:'Sunny • Walk/Bike +1 coin', mods:{ walkBikeCoinBonus: 1 }, banner:{ bg:'#ecfeff', fg:'#075985' } },
+  { key:'rainy',  label:'Rainy • Motorbike +0.5 kg CO₂', mods:{ motorbikeCo2Penalty: 0.5 }, banner:{ bg:'#e0f2fe', fg:'#0c4a6e' } },
+  { key:'cloudy', label:'Cloudy • Neutral', mods:{}, banner:{ bg:'#f1f5f9', fg:'#0f172a' } },
+  { key:'smoggy', label:'Pollution alert • +0.5 kg baseline', mods:{ baselineCo2: 0.5 }, banner:{ bg:'#fff7ed', fg:'#9a3412' } },
+];
+
+export const EVENTS = [
+  { key:'traffic',  label:'Traffic jam', co2:+0.5 },
+  { key:'power',    label:'Power cut',   co2:-0.2 },
+  { key:'discount', label:'Discount day', coins:+1 },
+  { key:'campaign', label:'Campaign',     coins:+2 },
+  { key:'sick',     label:'Sick day',     co2:-0.3 },
+];
+
+export const POIS = {
+  'morning':   [ {label:'Long hot shower', co2:+0.8, coins:0}, {label:'Cold shower', co2:+0.2, coins:+1}, {label:'Coffee to‑go', co2:+0.5, coins:0}, {label:'Cook noodles', co2:+0.3, coins:+1} ],
+  'transport': [ {label:'Motorbike', co2:+2.5, coins:0, mod:'motorbikeCo2Penalty'}, {label:'Bus', co2:+0.9, coins:+1}, {label:'Bicycle', co2:0, coins:+2, mod:'walkBikeCoinBonus'}, {label:'Walk', co2:0, coins:+2, mod:'walkBikeCoinBonus'} ],
+  'lunch':     [ {label:'Canteen', co2:+0.7, coins:+1}, {label:'Street food', co2:+1.5, coins:0}, {label:'Vegetarian', co2:+0.3, coins:+2}, {label:'Delivery', co2:+2.0, coins:0} ],
+  'study':     [ {label:'Library AC', co2:+0.4, coins:+1}, {label:'Cafe', co2:+1.2, coins:+1}, {label:'Sports', co2:+0.1, coins:+2}, {label:'Dorm fan', co2:+0.2, coins:+2} ],
+  'evening':   [ {label:'Go out (bike)', co2:+2.5, coins:+1, mod:'motorbikeCo2Penalty'}, {label:'Stay dorm', co2:+0.3, coins:+2}, {label:'Cook dinner', co2:+0.8, coins:+2}, {label:'Order delivery', co2:+2.0, coins:0} ],
+};
+
+export const QUIZZES = [
+  { q:'Which mode emits the most CO₂ per km in Hanoi?', a:['Walking','Bus','Motorbike','Bicycle'], correct:2, fact:'Motorbikes emit more per passenger‑km than buses.' },
+  { q:'Best lunch for lower footprint?', a:['Street food with plastic','Delivery','Vegetarian meal','Meat combo'], correct:2, fact:'Plant‑based meals generally emit less CO₂.' },
+  // ...add 10+ localized items
+];
+
+export const INVESTMENTS = [
+  { key:'tree', label:'Plant Tree', cost:10, co2:-2.0, trees:+1 },
+  { key:'solar', label:'Install Solar', cost:20, co2:-4.0 },
+  { key:'bike', label:'Bike‑sharing', cost:15, co2:-3.0 },
+  { key:'bottle', label:'Reusable Bottle', cost:5, co2:-1.0 },
+];
+```
+
+---
+
+## 13) UI Components & Screens
+
+* **index.html (Menu):** Title, Play, Learn, About, Mute/Unmute toggle.
+* **game.html:**
+
+  * **HUD** (sticky top) — day/CO₂/coins/trees/profile, audio toggle.
+  * **Status bar** — weather/event banner.
+  * **Map** — grid of tiles (road/park/water/poi), avatar, POI labels.
+  * **Modal** — choices per POI (title/desc, list of options with CO₂/coins, Choose/Close).
+  * **Quiz modal** — question, 4 answers, result message.
+  * **End of Day modal** — summary, Continue.
+  * **Investment screen** (after day 5) — cards with cost/effect, Buy, net reductions visualization.
+  * **Final report** — totals & rank (Eco Hero / Conscious Citizen / Urban Polluter), Replay.
+* **about.html:** Concept, team credits, how numbers are estimated, acknowledgements.
+
+**Responsive:** Map scales down grid size under 820px; tap controls optional.
+
+---
+
+## 14) Audio
+
+* **assets/audio/ambient.mp3** — looped at low volume.
+* **assets/audio/click.wav** — UI confirmations.
+* **assets/audio/success.wav** — quiz correct, investment bought.
+
+Add a **mute/unmute** toggle in HUD; store preference in `localStorage`.
+
+---
+
+## 15) CSS Design System (game.css)
+
+* **CSS variables:**
+
+  * `--bg`, `--ink`, `--muted`, `--brand` (green), `--brand-2` (blue), `--danger` (red), `--grid-size`.
+* **Map tiles:** `.t-road`, `.t-park`, `.t-water`, `.t-poi`, `.t-block`.
+* **HUD pills:** `.pill.co2`, `.pill.coins`, `.pill.trees`.
+* **Banner colors** driven by weather `banner.bg`/`banner.fg`.
+* Prefer **SVG** for POI icons and background flourishes (cartoon/illustrated vibe, not pixel art).
+
+---
+
+## 16) Implementation Plan (Phased)
+
+**Phase 1 — Scaffolding (0):**
+
+* Create folders & base HTML files; wire CSS/JS imports.
+* Render map grid; keyboard movement; walkable tiles.
+
+**Phase 2 — HUD & Weather (1):**
+
+* Implement sticky HUD + status banner.
+* `startDay()` with weather randomizer & baseline CO₂.
+
+**Phase 3 — POIs & Choices (2):**
+
+* POI detection; modal list; apply CO₂/coins; weather modifiers; toasts.
+* Random events (25%).
+
+**Phase 4 — Quizzes & Day Summary (3):**
+
+* Show one quiz per day; award coins.
+* End-of-day summary; advance day; reset per-day state.
+
+**Phase 5 — Investments & Final Report (4):**
+
+* Investment screen; apply reductions; tree count.
+* Final results screen, rank calc; Replay.
+
+**Phase 6 — Audio & Polish (5):**
+
+* Ambient loop, SFX, mute toggle; accessibility; mobile controls.
+
+---
+
+## 17) Acceptance Criteria (Key)
+
+* **Navigation:** Menu → Game Day 1; About works.
+* **Map:** Movement restricted to walkable; POI modal auto-opens on entry.
+* **HUD:** Day/co₂/coins/trees/profile all update immediately; sticky on scroll.
+* **Weather:** Banner reflects selection; modifiers applied correctly; smog adds baseline.
+* **Events:** ~25% chance after actions; toast shows deltas; numbers update.
+* **Quiz:** One per day; correct grants coins; shows fact; cannot repeat same day.
+* **End of Day:** Requires ≥ 3 actions; shows daily totals; day increments; resets per-day values.
+* **Investments:** Costs deducted; reductions applied; trees count increases; shows visual change.
+* **Final Report:** Displays totals, net reductions, rank; Replay resets all state.
+* **Audio:** Plays by default; toggle mutes all; preference persists.
+
+---
+
+## 18) Testing Checklist
+
+* Keyboard controls on desktop; tap controls (if added) on mobile.
+* Weather modifier math (sunny bonus, rainy penalty, smog baseline).
+* Event chance calibrated; no double application.
+* Quiz lockout per day; randomization without repeats until pool exhausted.
+* End-of-day only after minimum actions; daily reset correctness.
+* Investment calculations: co₂Total minus reductions; trees increment.
+* Performance: 60fps movement, no layout thrash; image assets optimized.
+* Accessibility: Tab into modals; Escape closes; readable contrast; ARIA roles for dialogs.
+
+---
+
+## 19) Performance & Accessibility
+
+* Avoid large images; prefer inline SVG; lazy-load non-critical assets.
+* Use `prefers-reduced-motion` to simplify movement/animations.
+* Respect reduced‑motion for ambient audio auto‑play (gate on user interaction).
+
+---
+
+## 20) Future Extensions (Backlog)
+
+* Local leaderboard (lowest net CO₂) via `localStorage`.
+* Rainy‑day pathing effects; puddle tiles.
+* NPCs with dialog tips (AQI facts, Hanoi campus trivia).
+* Streak bonuses for consecutive eco days.
+* Multi-language: vi/en toggle.
+
+---
+
+## 21) Dev Notes
+
+* All numbers are placeholders for gameplay balance; keep values centralized in `config.js`.
+* Keep UI copy short; use tooltips and concise facts.
+* Protect against double‑clicks on modal choices; disable buttons after click.
+* Ensure all state changes go through a single source of truth (`game.js`), UI reads from state.
+
+**Done = Playable loop across 5 days with investments, accurate counters, and polished HUD.**
+"
+
+6. 
+here is the updated plan, modify the code to the following: "# Carbon Quest — Synthesized User Stories & Dev Spec (Updated)
+
+**Working title:** *Week in Hanoi: Carbon Quest*
+**Platform:** Web (HTML/CSS/JS only)
+**Style:** Pokémon-like overworld (non‑pixel), illustrated map
+**Run length:** 5 in‑game days + Investments stage
+**Top HUD:** Day / CO₂ Today / Coins / Trees / Profile (sticky)
+
+---
+
+## 1) Purpose & Learning Goal
+
+Players live 5 days as a Hanoi uni student. Every choice (transport, meals, venue time, home climate) changes **CO₂** and **Coins**. After 5 days, coins fund **green actions** to reduce total CO₂. Weather & random events nudge decisions.
+
+---
+
+## 2) Global Visual System
+
+### 2.1 Color Tokens
+
+```
+--ink:#1f2937; --muted:#64748b; --card:#ffffff; --shadow:rgba(0,0,0,.12);
+--road:#E7D1A7; --water:#9EC7FF; --grass:#E9F7E6;
+
+--home:#A8C686;              /* Home */
+--transport:#B0B0B0;         /* Bus stops / transport UI */
+--school:#8ED1A0;            /* School campus */
+--company:#7C7C7C;           /* Company zone */
+--food:#D7A86E;              /* Food stalls */
+--coffee:#F6D6AD;            /* Coffee shop */
+--fine:#4C6054;              /* Fine dining */
+```
+
+Use these both in map styling and site UI.
+
+### 2.2 Map Composition
+
+* Layers: base terrain → roads (rounded) → obstacles (trees, hedges, rocks, ponds) → POIs → markers.
+* Roads connect all POIs; water edges and cliffs for framing; obstacles gate easy shortcuts.
+* Interaction affordance: slight glow or pulse on hover/focus.
+
+### 2.3 POIs (7 locations + bus stops)
+
+* **Home (left)**: floor‑plan cutaway with Bedroom, Kitchen, Living, Yard (bicycle + motorbike).
+* **Entrance** (between Home and road): short road segment, **Bus Stop #1**.
+* **School**: fenced campus with **Main Building**, **Library**, **Canteen** + **Bus Stop #2** at gate.
+* **Company**: office/factory block + **Bus Stop #3** outside.
+* **Food Stalls (x3)**: A) Phở/Hủ tiếu, B) Office Lunch, C) Dessert.
+* **Coffee shop (x1)**.
+* **Fine dining (x1)**.
+* **Optional Bus Stop #4** (balance pathing, if needed).
+
+### 2.4 Art Deliverables (SVG preferred)
+
+`home_floorplan.svg`, `entrance_bus.svg`, `school_campus.svg`, `company_block.svg`, `stall_pho.svg`, `stall_lunch.svg`, `stall_dessert.svg`, `cafe.svg`, `fine_dining.svg`, `bus_stop.svg`, `obstacles_pack.svg`, `vehicle_bike.svg`, `vehicle_moto.svg`, `vehicle_bus.svg`.
+Style: soft outlines, flat shading, warm shadows, 3/4 overhead.
+
+---
+
+## 3) Weather & Events
+
+### 3.1 Daily Weather (random per day)
+
+* **Sunny:** Walk/Bike +1 coin; banner cyan.
+* **Rainy:** Motorbike +0.5 kg; banner light‑blue.
+* **Cloudy:** Neutral.
+* **Smoggy:** +0.5 kg **baseline** applied at day start; banner warm‑amber.
+
+### 3.2 Random Events (~25% after a choice)
+
+Traffic jam (+0.5 kg), Power cut (‑0.2 kg), Discount day (+1 coin), Campaign (+2 coins), Sick day (‑0.3 kg). Toast with deltas.
+
+---
+
+## 4) Game Loop
+
+1. **Menu → Play** (About optional).
+2. **Day start:** Weather banner + baseline.
+3. **Overworld:** Move with keys/touch. Enter POIs to act.
+4. **Quiz:** 1 per day, +3 coins on correct.
+5. **End of Day:** Summary + tip (or via Bedroom → Sleep).
+6. **After Day 5:** Investments → Net CO₂ reduction → Final Report & Rank → Replay.
+
+---
+
+## 5) User Stories (synthesized)
+
+### EPIC A — Map & Navigation
+
+* **A1. Move on an illustrated map**
+  *As a player*, I move my avatar on roads/parks and reach POIs.
+  **AC:** Walkable tiles only; obstacles block; hover pulse on POIs; mobile tap works.
+
+* **A2. Enter POIs to act**
+  *As a player*, stepping on a POI opens a modal with actions.
+  **AC:** Actions show CO₂ & coin deltas; confirm applies modifiers and closes.
+
+### EPIC B — Home Floor Plan
+
+* **B1. Bedroom**
+  *As a player*, I can **Nap** or **Sleep (End Day)**.
+  **AC:** Sleep ends the day immediately, applies small CO₂.
+
+* **B2. Kitchen**
+  *As a player*, I can cook **Breakfast / Afternoon meal / Dinner**.
+  **AC:** Different CO₂/coin values; toast confirmation.
+
+* **B3. Living Room**
+  *As a player*, I can **Watch TV** (time/energy cost).
+
+* **B4. Home Climate**
+  *As a player*, I can toggle **Fan** vs **AC** for 2h segments.
+  **AC:** Setting persists until changed; applies different CO₂/coins.
+
+### EPIC C — Transport
+
+* **C1. Walk (manual nav)**
+  *As a player*, I can walk anywhere by navigating the avatar.
+  **AC:** 0 kg CO₂; sunny bonus coin.
+
+* **C2. Bike / Motorbike / Bus**
+  *As a player*, clicking a **vehicle** (yard bike/motorbike or bus stop) opens a **Destination Picker** and plays a **travel animation**; the vehicle remains **parked** at the destination.
+  **AC:** Correct modifiers per weather; arrival respawns avatar; parked state updates.
+
+### EPIC D — Venues & Auto Loads
+
+* **D1. School**
+  Entering applies **Campus AC load** once per visit; internal sub‑POIs may add more.
+
+* **D2. Company**
+  Entering applies **Office AC load** once per visit.
+
+### EPIC E — Food & Drinks
+
+* **E1. Food stalls / Coffee / Fine dining**
+  *As a player*, arrival opens a **menu** (3–4 items) with clear CO₂/coins; optional **Reusable** toggle where applicable.
+
+### EPIC F — HUD & Progress
+
+* **F1. Sticky HUD** shows **Day**, **CO₂ Today**, **Coins**, **Trees**, **Profile**.
+* **F2. Weather banner** states modifiers.
+* **F3. End‑of‑day Summary** shows totals & tip; **Investments** after Day 5.
+
+---
+
+## 6) Balancing Table (CO₂ kg, Coins)
+
+### 6.1 Home
+
+| Location     | Action               |   CO₂ | Coins | Notes               |
+| ------------ | -------------------- | ----: | ----: | ------------------- |
+| Bedroom      | Nap (1h)             | +0.10 |     0 | baseline electric   |
+| Bedroom      | Sleep (End Day)      | +0.10 |     0 | bypass 3‑phase rule |
+| Kitchen      | Cook breakfast       | +0.30 |    +1 | gas/electric mix    |
+| Kitchen      | Cook afternoon meal  | +0.50 |    +1 |                     |
+| Kitchen      | Cook dinner          | +0.80 |    +2 | shared energy prep  |
+| Living       | Watch TV/stream (2h) | +0.15 |     0 |                     |
+| Home climate | Fan (2h)             | +0.20 |    +1 | toggle persists     |
+| Home climate | AC (2h)              | +0.40 |     0 | toggle persists     |
+
+### 6.2 Transport
+
+| Mode      | Base CO₂ | Coins | Weather Modifiers    | Behavior                          |
+| --------- | -------: | ----: | -------------------- | --------------------------------- |
+| Walk      |     0.00 |    +2 | **Sunny:** +1 coin   | manual nav                        |
+| Bike      |     0.00 |    +2 | **Sunny:** +1 coin   | choose destination; vehicle parks |
+| Motorbike |    +2.50 |     0 | **Rainy:** +0.50 CO₂ | choose destination; parks         |
+| Bus       |    +0.90 |    +1 | none                 | between bus stops & nearby POIs   |
+
+### 6.3 Venue auto loads
+
+| Venue                | On Entry CO₂ | Notes                     |
+| -------------------- | -----------: | ------------------------- |
+| School               |        +0.40 | once per visit            |
+| Company              |        +0.50 | once per visit            |
+| Fine Dining ambience |        +0.30 | per visit (menu auto add) |
+
+### 6.4 Menus
+
+**Food Stall A — Phở/Hủ tiếu**
+Phở bò +1.20/0c; Phở gà +0.90/0c; Hủ tiếu +1.00/0c; Reusable container −0.20/+1c.
+
+**Food Stall B — Office Lunch**
+Cơm sườn trứng +1.10/0c; Cơm gà chiên +0.90/0c; Cơm cá kho +0.80/+1c; Cơm chay +0.40/+2c.
+
+**Food Stall C — Desserts**
+Cotton candy +0.10/0c; Flan +0.20/0c; Chè khúc bạch +0.25/0c; Reusable spoon −0.05/+1c.
+
+**Coffee Shop**
+Iced milk coffee (plastic) +0.30/0c; Dine‑in mug +0.20/+1c; Cold brew return bottle +0.15/+1c; Stay 1h AC +0.20/auto.
+
+**Fine Dining**
+Steak set +2.50/0c; Seafood set +1.80/0c; Vegetarian set +1.00/+1c; Ambience +0.30/auto.
+
+> Weather and event modifiers stack after base values.
+
+---
+
+## 7) Information Architecture & Files
+
+```
+/game_app
+  index.html        # menu
+  game.html         # map + gameplay
+  about.html        # concept, team, CO₂ math
+
+  /css
+    style.css       # global + menu
+    game.css        # map, HUD, modals, banners
+
+  /js
+    config.js       # WEATHER, EVENTS, POIS, MENUS, TRANSPORT
+    utils.js        # RNG, formatting, tween/path helpers
+    menu.js         # index interactions
+    game.js         # state machine, map, movement, POIs, quizzes
+    main.js         # bootstrap for game.html
+
+  /assets
+    /images         # backgrounds, skyline, UI flourishes
+    /sprites        # avatar, vehicles, markers
+    /audio          # ambient.mp3, click.wav, success.wav
+    /svg            # POI art listed above
+```
+
+---
+
+## 8) State Model (game.js)
+
+```js
+state = {
+  day: 1, daysTotal: 5,
+  co2Today: 0, co2Total: 0,
+  coins: 0, trees: 0,
+  weather: null, todaysMods: {},
+  quizDoneToday: false, actionsDoneToday: 0,
+  homeClimate: 'fan',               // 'fan' | 'ac'
+  pos: {x:2, y:6}, gridW:15, gridH:10,
+  vehicles: { parked: { bike: 'home', moto: 'home' } },
+  visitedFlags: { school:false, company:false }, // reset on exit
+  profile: { name:'Linh', avatar:'🎒', title:'Student • Hanoi' }
+}
+```
+
+Transitions: `startDay()` → weather & baseline → play; `onPOIAction()` applies deltas + maybeEvent + maybeQuiz; `enterVenue()` applies auto load once; `sleepEndDay()` bypasses phase rule; `endOfDay()` aggregates; `investments()`; `finalReport()`.
+
+---
+
+## 9) Interaction Specs
+
+* **Destination Picker** (bike/moto/bus): list of reachable POIs (bus limited to stops/zones). After choose → animate along road polyline; park vehicle; respawn avatar.
+* **Reusable toggles** in menus: checkbox row updates previewed totals before confirm.
+* **Auto load guard:** per venue `visitedFlags` set on entry; cleared on exit bounds.
+* **Quiz cadence:** trigger once after first or second action each day; pool without repeat; +3 coins on correct; short fact after answer.
+* **Summary:** show CO₂ Today, Coins gained, top emitter category, 1 tip.
+
+---
+
+## 10) Investments (after Day 5)
+
+| Action                                | Cost |                   Effect |
+| ------------------------------------- | ---: | -----------------------: |
+| 🌳 Plant Tree                         |   10 | −2.0 kg total, `trees+1` |
+| ☀️ Solar Panel                        |   20 |            −4.0 kg total |
+| 🚲 Bike‑sharing                       |   15 |            −3.0 kg total |
+| 💧 Reusable Bottle                    |    5 |            −1.0 kg total |
+| Visual: skyline clears; trees sprout. |      |                          |
+
+---
+
+## 11) Acceptance Criteria (high‑impact)
+
+* Map renders with illustrated POIs; palette applies per location.
+* HUD stays fixed and updates live (Day/CO₂/Coins/Trees/Profile).
+* Home sub‑areas open modals with actions; climate toggle persists.
+* Transport picker + animations; vehicles park at destination.
+* School/Company apply auto loads once per visit.
+* Food/Coffee/Fine Dining show menus with accurate CO₂/coins and reusable toggles.
+* Weather & events modify outcomes correctly; smog adds baseline.
+* One quiz per day; End Day via Bedroom or after normal flow; 5‑day investment stage; final rank.
+* Audio: ambient loop, click/success SFX; mute toggle persists.
+* Mobile: tap to move and interact; dialogs keyboard accessible; Escape closes.
+
+---
+
+## 12) Build Plan (sprints)
+
+1. **Map & HUD**: grid + roads + POIs + sticky HUD + palettes.
+2. **Home & Transport**: sub‑area modals; Fan/AC; destination picker; vehicle parking + animation.
+3. **Venues**: School/Company auto loads; menus for Food/Coffee/Fine.
+4. **Weather/Events/Quiz**: daily banner, modifiers, event toasts, quiz modal & pool.
+5. **Day/Invest/Report**: summary flow, investments screen, final rank, replay.
+6. **Polish**: audio, accessibility, mobile, performance.
+
+---
+
+## 13) Test Checklist
+
+* Movement constraints; POI hover; mobile taps.
+* Modal choices apply stacked modifiers (weather + event + base).
+* Vehicles persist parked; picker lists correct destinations.
+* Auto load applied once per entry; cleared on exit.
+* Quiz: once/day; rewards applied; facts shown.
+* End Day via Bedroom; day rollover resets `co2Today` & flags.
+* Investments reduce **co2Total**; `trees` increments on Plant Tree.
+* No console errors; acceptable perf on mid‑range mobile.
+
+---
+
+## 14) Nice‑to‑Haves (backlog)
+
+* Local leaderboard (lowest net CO₂) via `localStorage`.
+* NPC tips, rain puddle path effects, vi/en toggle, simple cutscenes for travel.
+\"
+
+if there is no svg to input, just create that directories in the asset folder and leave it blank, i will fill it in late
+
+7.
+i just add these file in the assets/images folder, but they are all png file, not svg. add the image to the code so that the UI displayed as documented "home_floorplan.svg, entrance_bus.svg, school_campus.svg, company_block.svg, stall_pho.svg, stall_lunch.svg, stall_dessert.svg, cafe.svg, fine_dining.svg, bus_stop.svg, obstacles_pack.svg"
